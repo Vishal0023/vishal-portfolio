@@ -55,3 +55,9 @@ This creates a NEW public repository named `vishal-portfolio`; choose another na
 ## Deploy
 
 Import the repository into Vercel and use the auto-detected Next.js settings. No environment variables are required. GitHub Pages does not run a Next.js server by default; use Vercel or configure static export separately.
+
+## CI pipeline
+
+`.github/workflows/ci.yml` runs on pushes and pull requests to `main`, and can be started manually from GitHub Actions. It uses Node.js 22, installs with `npm ci`, generates Next.js types, runs TypeScript validation, and builds production output. It does not deploy and requires no secrets.
+
+For continuous deployment with Vercel, import this GitHub repository into your Vercel account. Vercel's Git integration then creates preview deployments for pull requests and production deployments for `main`. Configure this separately; the CI workflow itself does not publish a site.
